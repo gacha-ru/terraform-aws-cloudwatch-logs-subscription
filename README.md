@@ -17,7 +17,7 @@ Cloudwatch LogsのsubscriptionとLambdaのtrigger許可を作成する
 ```
 # Cloudwatch Log Groupを作成する
 module "logs_subscription" {
-  source              = "git::ssh://git@github.com:gacha-ru/terraform-aws-cloudwatch-logs-subscription.git"
+  source              = "git@github.com:gacha-ru/terraform-aws-cloudwatch-logs-subscription.git"
   log_group_name      = "/aws/rds/cluster/hoge-prd-master-db/slowquery"
   lob_filter_word     = ""
   log_group_retention = 14
@@ -27,7 +27,7 @@ module "logs_subscription" {
 # Cloudwatch Log Groupを作成しない。
 # この場合、log_filter_nameのロググループが事前に作成されていないとエラーになります。
 module "logs_subscription" {
-  source              = "git::ssh://git@github.com:gacha-ru/terraform-aws-cloudwatch-logs-subscription.git"
+  source              = "git@github.com:gacha-ru/terraform-aws-cloudwatch-logs-subscription.git"
   create_log_group    = "false"
   log_filter_name     = "${aws_rds_cluster.hoge.cluster_identifier}-slowquery"
   log_group_name      = "/aws/rds/cluster/${aws_rds_cluster.hoge.cluster_identifier}/slowquery"
